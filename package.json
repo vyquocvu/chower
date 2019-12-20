@@ -2,16 +2,41 @@
   "name": "chower",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
+  "main": "electron.js",
+  "build": {
+    "appId": "com.chower.app",
+    "directories": {
+      "buildResources": "assets"
+    },
+    "win": {
+      "category": "your.app.category.type",
+      "iconUrl": "path-to-icon.png"
+    },
+    "mac": {
+      "category": "your.app.category.type",
+      "iconUrl": "path-to-icon.png"
+    }
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "autoprefixer": "^9.7.3",
+    "electron": "^7.1.6",
+    "electron-is-dev": "^1.1.0",
+    "electron-reload": "^1.5.0",
+    "postcss-cli": "^6.1.3",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0"
+    "react-scripts": "3.3.0",
+    "tailwindcss": "^1.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "electron": "cross-env NODE_ENV=dev nodemon --exec electron .",
+    "start": "cross-env BROWSER=none npm run build:style  && npm run react-start",
+    "build:style":"tailwind build src/index.css -o src/styles/tailwind.css",
+    "react-start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -30,5 +55,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "electron-builder": "^21.2.0"
   }
 }
