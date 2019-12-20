@@ -14,6 +14,7 @@ function createWindow() {
     height: 720,
     webPreferences: {
       nodeIntegration: true,
+      webviewTag: true
     },
   })
   mainWindow.webContents.openDevTools()
